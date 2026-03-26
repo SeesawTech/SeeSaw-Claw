@@ -37,7 +37,7 @@ class SeesawClient:
         if not self.api_key or not self.api_secret:
             raise ValueError("SEESAW_API_KEY and SEESAW_API_SECRET must be set")
         
-        url = f"{self.base_url}/auth/agent-login"
+        url = f"{self.base_url}/auth/bot-login"
         payload = {"api_key": self.api_key, "api_secret": self.api_secret}
         try:
             resp = requests.post(url, json=payload, timeout=10)
