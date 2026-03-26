@@ -1,5 +1,5 @@
 ---
-name: seesaw-agent
+name: seesaw-claw
 description: "Interact with SeeSaw Prediction Market — list markets, get quotes, buy/sell shares, check balance and positions."
 metadata:
   {
@@ -32,7 +32,7 @@ metadata:
 Recommended ClawHub flow:
 
 ```bash
-clawhub install seesaw-agent
+clawhub install seesaw-claw
 pip install -r skills/seesaw/requirements.txt
 openclaw skills check
 ```
@@ -43,7 +43,7 @@ Then configure the skill in `~/.openclaw/openclaw.json`:
 {
   "skills": {
     "entries": {
-      "seesaw-agent": {
+      "seesaw-claw": {
         "enabled": true,
         "env": {
           "SEESAW_BASE_URL": "https://app.seesaw.fun/v1",

@@ -487,7 +487,7 @@ def main():
     
     if missing:
         print("\n" + "!" * 50)
-        print("ERROR: SEESAW-AGENT IS UNINITIALIZED")
+        print("ERROR: SEESAW-CLAW IS UNINITIALIZED")
         print("!" * 50)
         print(f"Missing environment variables: {', '.join(missing)}")
         print("\nTo initialize, add these variables to your OpenClaw Gateway Config:")

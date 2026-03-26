@@ -1,10 +1,10 @@
 # SeeSaw-Claw
 
-Publish-ready repository for the `seesaw-agent` OpenClaw skill.
+Publish-ready repository for the `seesaw-claw` OpenClaw skill.
 
 This repository is designed to support three workflows:
 
-1. Install from ClawHub with `clawhub install seesaw-agent`
+1. Install from ClawHub with `clawhub install seesaw-claw`
 2. Install manually from GitHub by copying `skills/seesaw` into your OpenClaw workspace
 3. Publish updates to ClawHub from this repository
 
@@ -13,14 +13,14 @@ This repository is designed to support three workflows:
 Recommended path:
 
 ```bash
-clawhub install seesaw-agent
+clawhub install seesaw-claw
 pip install -r skills/seesaw/requirements.txt
 openclaw skills check
 ```
 
-After installing the skill files, configure the required environment variables for `seesaw-agent`.
+After installing the skill files, configure the required environment variables for `seesaw-claw`.
 
-### Configure `seesaw-agent`
+### Configure `seesaw-claw`
 
 OpenClaw stores skill configuration in `~/.openclaw/openclaw.json` under `skills.entries.<skill-name>`.
 
@@ -30,7 +30,7 @@ Example:
 {
   "skills": {
     "entries": {
-      "seesaw-agent": {
+      "seesaw-claw": {
         "enabled": true,
         "env": {
           "SEESAW_BASE_URL": "https://app.seesaw.fun/v1",
@@ -54,13 +54,13 @@ If that helper is not available in your OpenClaw build, update `~/.openclaw/open
 ### Verify The Install
 
 ```bash
-openclaw skills info seesaw-agent
+openclaw skills info seesaw-claw
 openclaw skills check
 ```
 
 Expected result:
 
-- `seesaw-agent` appears in the skill list
+- `seesaw-claw` appears in the skill list
 - no missing requirements for `SEESAW_BASE_URL`, `SEESAW_API_KEY`, or `SEESAW_API_SECRET`
 
 ## Install From GitHub
@@ -95,7 +95,7 @@ pip install -r ~/.openclaw/workspace/skills/seesaw/requirements.txt
 
 ### Step 4: Configure API Credentials
 
-Add the same `skills.entries.seesaw-agent.env` block shown above to `~/.openclaw/openclaw.json`.
+Add the same `skills.entries.seesaw-claw.env` block shown above to `~/.openclaw/openclaw.json`.
 
 ### Step 5: Refresh OpenClaw
 
@@ -104,7 +104,7 @@ Start a new OpenClaw session, or re-run the gateway so it reloads workspace skil
 ### Step 6: Verify
 
 ```bash
-openclaw skills info seesaw-agent
+openclaw skills info seesaw-claw
 openclaw skills check
 ```
 
@@ -135,7 +135,7 @@ python skills/seesaw/scripts/seesaw.py positions
 Publish the skill folder in this repository:
 
 ```bash
-clawhub publish ./skills/seesaw --slug seesaw-agent --name "SeeSaw Prediction Market" --version 0.1.0 --tags latest
+clawhub publish ./skills/seesaw --slug seesaw-claw --name "SeeSaw Prediction Market" --version 0.1.0 --tags latest
 ```
 
 For bulk updates after local changes:
