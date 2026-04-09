@@ -23,7 +23,7 @@ jobs:
       - name: Package SeeSaw-Claw
         run: |
           rm -f seesaw-claw.zip
-          zip -r seesaw-claw.zip . -x ".git/*" ".github/*"
+          zip -r seesaw-claw.zip skills/ -x "*.pyc" "__pycache__/*"
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -45,6 +45,5 @@ jobs:
         env:
           S3_APK_BUCKET: ${{ secrets.S3_APK_BUCKET }}
         run: |
-          aws s3 rm "s3://${S3_APK_BUCKET}/skills/seesaw-claw.zip" || true
           aws s3 cp seesaw-claw.zip "s3://${S3_APK_BUCKET}/skills/seesaw-claw.zip" \
             --cache-control "no-cache, no-store, must-revalidate"
