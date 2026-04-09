@@ -1,0 +1,45 @@
+name: SeeSaw-Claw Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Package and Upload SeeSaw-Claw
+    runs-on: ubuntu-latest
+    environment: dev
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Package SeeSaw-Claw
+        run: |
+          rm -f seesaw-claw.zip
+          zip -r seesaw-claw.zip . -x ".git/*" ".github/*"
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Validate S3 deployment configuration
+        env:
+          S3_APK_BUCKET: ${{ secrets.S3_APK_BUCKET }}
+        run: |
+          if [ -z "$S3_APK_BUCKET" ]; then
+            echo "::error::Missing dev environment secret S3_APK_BUCKET"
+            exit 1
+          fi
+
+      - name: Upload zip to S3
+        env:
+          S3_APK_BUCKET: ${{ secrets.S3_APK_BUCKET }}
+        run: |
+          aws s3 rm "s3://${S3_APK_BUCKET}/skills/seesaw-claw.zip" || true
+          aws s3 cp seesaw-claw.zip "s3://${S3_APK_BUCKET}/skills/seesaw-claw.zip" \
+            --cache-control "no-cache, no-store, must-revalidate"
