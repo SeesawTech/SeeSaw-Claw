@@ -23,7 +23,7 @@ jobs:
       - name: Package SeeSaw-Claw
         run: |
           rm -f seesaw-claw.zip
-          zip -r seesaw-claw.zip skills/ -x "*.pyc" "__pycache__/*"
+          zip -r seesaw-claw.zip skills/ -x '*.pyc' '*__pycache__/*'
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
