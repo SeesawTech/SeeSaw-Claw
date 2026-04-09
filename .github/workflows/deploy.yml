@@ -8,6 +8,13 @@ on:
         required: false
         type: string
 
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-dev
+  cancel-in-progress: false
+
 jobs:
   deploy:
     name: Package and Upload SeeSaw-Claw
