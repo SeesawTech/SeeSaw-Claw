@@ -56,10 +56,12 @@ python skills/seesaw/scripts/seesaw.py
 
 ## 部署
 
-### Dev 環境
-- **自動**：PR 合併到 main 後打包為 zip 上傳 S3
-- **手動**：`gh workflow run deploy.yml --ref main`
-- 部署產物：`s3://{bucket}/skills/seesaw-claw.zip`，設置 no-cache
+### Dev 環境（手動觸發）
+```bash
+gh workflow run deploy.yml --ref main              # 部署 main 最新
+gh workflow run deploy.yml --ref main -f ref=<sha> # 指定 commit
+```
+部署產物：`s3://{bucket}/skills/seesaw-claw.zip`，設置 no-cache
 
 ### Prod 環境
 目前無獨立 Prod 部署，通過 S3 上的 zip 包分發。
