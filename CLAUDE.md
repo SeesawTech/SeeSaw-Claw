@@ -68,7 +68,11 @@ python skills/seesaw/scripts/seesaw.py
 
 ### Reviewers
 指定倉庫中所有 collaborator team，由 team 自動 assign 成員：
-- `@SeesawTech/devs`
+- `@SeesawTech/aiagent`
+- `@SeesawTech/trading-team`
+- `@SeesawTech/credits-team`
+- `@SeesawTech/social-team`
+- `@SeesawTech/ai-team`
 
 ### 分支命名
 - 功能：`feature/xxx`
