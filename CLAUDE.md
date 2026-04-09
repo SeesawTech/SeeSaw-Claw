@@ -67,7 +67,8 @@ python skills/seesaw/scripts/seesaw.py
 ## PR 規範
 
 ### Reviewers
-- **必須**：`@SeesawTech/aiagent`
+指定倉庫中所有 collaborator team，由 team 自動 assign 成員：
+- `@SeesawTech/devs`
 
 ### 分支命名
 - 功能：`feature/xxx`
